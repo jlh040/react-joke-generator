@@ -71,4 +71,11 @@ function JokeList({ numJokesToGet = 10 }) {
 
 }
 
+class JokeList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {jokes: []};
+  }
+}
+
 export default JokeList;
