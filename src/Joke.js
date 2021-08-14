@@ -8,10 +8,18 @@ class Joke extends React.Component {
     this.downVote = this.downVote.bind(this);
   }
 
+  /**
+   * when the user clicks the thumbs up, add one vote to the joke
+   * with the id that was passed in
+   */
   upVote() {
     this.props.vote(this.props.id, +1);
   }
 
+  /**
+   * when the user clicks the thumbs up, remove one vote from the joke
+   * with the id that was passed in
+   */
   downVote() {
     this.props.vote(this.props.id, -1);
   }
