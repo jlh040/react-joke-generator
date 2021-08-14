@@ -76,6 +76,10 @@ class JokeList extends React.Component {
     super(props);
     this.state = {jokes: []};
   }
+
+  generateNewJokes() {
+    this.setState({jokes: []});
+  }
 }
 
 export default JokeList;
