@@ -80,6 +80,12 @@ class JokeList extends React.Component {
   generateNewJokes() {
     this.setState({jokes: []});
   }
+
+  vote(id, delta) {
+    this.setState(state => (
+      state.jokes.map(j => (j.id === id ? { ...j, votes: j.votes + delta } : j))
+    ))
+  }
 }
 
 export default JokeList;
