@@ -59,9 +59,9 @@ class JokeList extends React.Component {
   /* change vote for this id by delta (+1 or -1) */
 
   vote(id, delta) {
-    this.setState(state => (
-      state.jokes.map(j => (j.id === id ? { ...j, votes: j.votes + delta } : j))
-    ))
+    this.setState(state => ({
+      jokes: state.jokes.map(j => (j.id === id ? { ...j, votes: j.votes + delta } : j))
+    }))
   }
 
   /* render: either loading spinner or list of sorted jokes. */
