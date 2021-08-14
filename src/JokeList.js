@@ -77,6 +77,39 @@ class JokeList extends React.Component {
     this.state = {jokes: []};
   }
 
+  static defaultProps = {
+    numJokesToGet: 10
+  }
+
+  componentDidMount() {
+    if (this.state.jokes.length === 0) {
+      this.getJokes();
+    }
+  }
+
+  async getJokes() {
+    let j = [...this.state.jokes];
+    let seenJokes = new Set();
+    try {
+      while (j.length < this.props.numJokesToGet) {
+        let res = await axios.get("https://icanhazdadjoke.com", {
+          headers: { Accept: "application/json" }
+        });
+        let { status, ...jokeObj } = res.data;
+
+        if (!seenJokes.has(jokeObj.id)) {
+          seenJokes.add(jokeObj.id);
+          j.push({ ...jokeObj, votes: 0 });
+        } else {
+          console.error("duplicate found!");
+        }
+      }
+      this.setState({jokes: j});
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   /* empty joke list and then call getJokes */
 
   generateNewJokes() {
@@ -92,7 +125,7 @@ class JokeList extends React.Component {
   }
 
   /* render: either loading spinner or list of sorted jokes. */
-  
+
   render() {
     const { jokes } = this.state;
     if (jokes.length) {
