@@ -17,7 +17,7 @@ class Joke extends React.Component {
   }
 
   /**
-   * when the user clicks the thumbs up, remove one vote from the joke
+   * when the user clicks the thumbs down, remove one vote from the joke
    * with the id that was passed in
    */
   downVote() {
