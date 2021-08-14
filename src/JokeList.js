@@ -87,6 +87,12 @@ class JokeList extends React.Component {
     }
   }
 
+  componentDidUpdate() {
+    if (this.state.jokes.length === 0) {
+      this.getJokes();
+    }
+  }
+
   async getJokes() {
     let j = [...this.state.jokes];
     let seenJokes = new Set();
