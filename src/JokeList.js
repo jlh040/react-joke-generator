@@ -75,6 +75,8 @@ class JokeList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {jokes: []};
+    this.generateNewJokes = this.generateNewJokes.bind(this);
+    this.vote = this.vote.bind(this);
   }
 
   static defaultProps = {
