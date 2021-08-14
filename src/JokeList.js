@@ -27,6 +27,10 @@ class JokeList extends React.Component {
     }
   }
 
+  /**
+   * fill up a new array with jokes until it has numJokesToGet jokes,
+   * then update the state with this new array
+   */
   async getJokes() {
     let j = [...this.state.jokes];
     let seenJokes = new Set();
