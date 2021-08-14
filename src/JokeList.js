@@ -15,12 +15,17 @@ class JokeList extends React.Component {
     numJokesToGet: 10
   }
 
+  /* when the page first loads and this component first mounts, fill up the jokes array */
   componentDidMount() {
     if (this.state.jokes.length === 0) {
       this.getJokes();
     }
   }
 
+  /**
+   * when the user clicks the button for new jokes, and this component re-renders,
+   * fill up the jokes array 
+   */
   componentDidUpdate() {
     if (this.state.jokes.length === 0) {
       this.getJokes();
