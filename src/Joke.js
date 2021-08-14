@@ -24,4 +24,18 @@ function Joke({ vote, votes, text, id }) {
   );
 }
 
+class Joke extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  upVote() {
+    vote(id, +1);
+  }
+
+  downVote() {
+    vote(id, -1);
+  }
+}
+
 export default Joke;
