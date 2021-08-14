@@ -10,7 +10,7 @@ class Joke extends React.Component {
 
   /**
    * when the user clicks the thumbs up, add one vote to the joke
-   * with the id that was passed in
+   * with the id on this joke instance
    */
   upVote() {
     this.props.vote(this.props.id, +1);
@@ -18,7 +18,7 @@ class Joke extends React.Component {
 
   /**
    * when the user clicks the thumbs down, remove one vote from the joke
-   * with the id that was passed in
+   * with the id on this joke instance
    */
   downVote() {
     this.props.vote(this.props.id, -1);
