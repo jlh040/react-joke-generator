@@ -24,6 +24,7 @@ class Joke extends React.Component {
     this.props.vote(this.props.id, -1);
   }
 
+  /* render a joke */
   render() {
     return (
       <div className="Joke">
