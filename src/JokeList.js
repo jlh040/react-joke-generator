@@ -77,14 +77,41 @@ class JokeList extends React.Component {
     this.state = {jokes: []};
   }
 
+  /* empty joke list and then call getJokes */
+
   generateNewJokes() {
     this.setState({jokes: []});
   }
+
+  /* change vote for this id by delta (+1 or -1) */
 
   vote(id, delta) {
     this.setState(state => (
       state.jokes.map(j => (j.id === id ? { ...j, votes: j.votes + delta } : j))
     ))
+  }
+
+  /* render: either loading spinner or list of sorted jokes. */
+  
+  render() {
+    const { jokes } = this.state;
+    if (jokes.length) {
+      let sortedJokes = [...jokes].sort((a, b) => b.votes - a.votes);
+    
+      return (
+        <div className="JokeList">
+          <button className="JokeList-getmore" onClick={this.generateNewJokes}>
+            Get New Jokes
+          </button>
+    
+          {sortedJokes.map(j => (
+            <Joke text={j.joke} key={j.id} id={j.id} votes={j.votes} vote={this.vote} />
+          ))}
+        </div>
+      );
+    };
+
+    return null;
   }
 }
 
